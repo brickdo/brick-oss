@@ -1,0 +1,15 @@
+{
+  "name": "@brick/misc",
+  "description": "Random bag of shared code, can be Brick-specific",
+  "exports": {
+    "./*": "./dist/*.js",
+    "./constants/subscription": "./dist/constants/subscription/index.js"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -1,0 +1,28 @@
+// Turborepo configuration. See docs/turbo.md.
+{
+  "$schema": "https://turbo.build/schema.json",
+  // We specify most of the dependencies in the global package.json, so this is necessary. In the future we can get rid of it if we migrate all dependencies into the package.json of each package. Turborepo automatically handles lockfile versions as implicit inputs.
+  "globalDependencies": ["pnpm-lock.yaml"],
+  "pipeline": {
+    // Each package's build depends on the build of its dependencies
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    // To typecheck a package, we might also want to build its dependencies (not sure?)
+    "check": {
+      "dependsOn": ["^build"]
+    },
+    // To start something in dev mode, we need to build its dependencies
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    // To start something, for sure we need to build its dependencies as well (although not necessarily the package itself, eg. for dev mode or for packages that use tsx for 'start'). TODO: review all "start" scripts, we might not need them anymore. Definitely shouldn't have dev mode. Some will depend on build and some will depend on ^build.
+    "start": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

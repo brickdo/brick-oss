@@ -1,0 +1,88 @@
+{
+  "name": "@brick/client",
+  "private": true,
+  "scripts": {
+    "generate-types-schema": "node tools/generate-types-schema.js",
+    "dev": "pnpm run generate-types-schema && PORT=4000 TAILWIND_MODE=watch FAST_REFRESH=true node scripts/start.js",
+    "build": "pnpm run generate-types-schema && node scripts/build.js",
+    "check": "tsc --noEmit",
+    "test": "node scripts/test.js"
+  },
+  "//dependencies": {
+    "@ckeditor/*": "Pinned because we never want to autoupgrade-and-forget, each upgrade is special."
+  },
+  "dependencies": {
+    "@brick/lib": "workspace:*",
+    "@brick/misc": "workspace:*",
+    "@ckeditor/ckeditor5-alignment": "39.0.2",
+    "@ckeditor/ckeditor5-autoformat": "39.0.2",
+    "@ckeditor/ckeditor5-autosave": "39.0.2",
+    "@ckeditor/ckeditor5-basic-styles": "39.0.2",
+    "@ckeditor/ckeditor5-block-quote": "39.0.2",
+    "@ckeditor/ckeditor5-clipboard": "39.0.2",
+    "@ckeditor/ckeditor5-code-block": "39.0.2",
+    "@ckeditor/ckeditor5-core": "39.0.2",
+    "@ckeditor/ckeditor5-dev-utils": "38.4.1",
+    "@ckeditor/ckeditor5-editor-balloon": "39.0.2",
+    "@ckeditor/ckeditor5-engine": "39.0.2",
+    "@ckeditor/ckeditor5-essentials": "39.0.2",
+    "@ckeditor/ckeditor5-font": "39.0.2",
+    "@ckeditor/ckeditor5-heading": "39.0.2",
+    "@ckeditor/ckeditor5-highlight": "39.0.2",
+    "@ckeditor/ckeditor5-horizontal-line": "39.0.2",
+    "@ckeditor/ckeditor5-html-embed": "39.0.2",
+    "@ckeditor/ckeditor5-image": "39.0.2",
+    "@ckeditor/ckeditor5-indent": "39.0.2",
+    "@ckeditor/ckeditor5-link": "39.0.2",
+    "@ckeditor/ckeditor5-list": "39.0.2",
+    "@ckeditor/ckeditor5-media-embed": "39.0.2",
+    "@ckeditor/ckeditor5-paragraph": "39.0.2",
+    "@ckeditor/ckeditor5-paste-from-office": "39.0.2",
+    "@ckeditor/ckeditor5-react": "6.1.0",
+    "@ckeditor/ckeditor5-special-characters": "39.0.2",
+    "@ckeditor/ckeditor5-table": "39.0.2",
+    "@ckeditor/ckeditor5-theme-lark": "39.0.2",
+    "@ckeditor/ckeditor5-typing": "39.0.2",
+    "@ckeditor/ckeditor5-ui": "39.0.2",
+    "@ckeditor/ckeditor5-upload": "39.0.2",
+    "@ckeditor/ckeditor5-utils": "39.0.2",
+    "@ckeditor/ckeditor5-watchdog": "39.0.2",
+    "@ckeditor/ckeditor5-widget": "39.0.2",
+    "@codemirror/autocomplete": "^0.19",
+    "@codemirror/closebrackets": "^0.19",
+    "@codemirror/commands": "^0.19",
+    "@codemirror/comment": "^0.19",
+    "@codemirror/highlight": "^0.19",
+    "@codemirror/history": "^0.19",
+    "@codemirror/lang-html": "^0.19",
+    "@codemirror/language": "^0.19",
+    "@codemirror/lint": "^0.19",
+    "@codemirror/matchbrackets": "^0.19",
+    "@codemirror/rectangular-selection": "^0.19",
+    "@codemirror/search": "^0.19",
+    "@codemirror/state": "^0.19",
+    "@codemirror/view": "^0.19",
+    "@uiw/react-codemirror": "^4.3.0",
+    "styled-jsx": "^4.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

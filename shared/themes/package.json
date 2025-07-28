@@ -1,0 +1,21 @@
+{
+  "name": "@brick/themes",
+  "description": "Themes (like Sepia) for Brick pages",
+  "files": [
+    "dist",
+    "css"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@brick/lib": "workspace:*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

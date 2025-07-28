@@ -1,0 +1,11 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      // This can go once paths go away, see https://github.com/brickdo/brick/issues/86
+      "inputs": ["$TURBO_DEFAULT$", "../shared/**", "!../shared/.turbo/**"],
+      "outputs": ["build/**"]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html#im-writing-a-library
+    "module": "node16",
+    "target": "es2015",
+    "outDir": "dist",
+    "strict": true,
+    // "verbatimModuleSyntax": true,    // Needs newer TS version
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true
+  }
+}

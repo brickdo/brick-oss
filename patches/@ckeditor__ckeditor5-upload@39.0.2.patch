@@ -1,0 +1,38 @@
+# This patch is for CKEditor 5 Upload plugin to allow headers to be a function.
+#
+# Original code:
+#
+# Copyright: (c) 2003–2025, [CKSource Holding sp. z o.o.](https://cksource.com)
+# License: GPL-2.0-or-later, relicensed here under GPL-3.0-or-later.
+#
+# Modifications:
+#
+# Copyright: (c) 2025 Monadfix OÜ
+# License: GPL-3.0-or-later
+#
+diff --git a/src/adapters/simpleuploadadapter.js b/src/adapters/simpleuploadadapter.js
+index 572e56d04928cd2385054f88d3eb05e9198ed8a5..4c916095f989857c4c12e76a2b3b0c17a222f0ad 100644
+--- a/src/adapters/simpleuploadadapter.js
++++ b/src/adapters/simpleuploadadapter.js
+@@ -159,7 +159,7 @@ class Adapter {
+      */
+     _sendRequest(file) {
+         // Set headers if specified.
+-        const headers = this.options.headers || {};
++        const headers = typeof this.options.headers === 'function' ? this.options.headers() : this.options.headers || {};
+         // Use the withCredentials flag if specified.
+         const withCredentials = this.options.withCredentials || false;
+         for (const headerName of Object.keys(headers)) {
+diff --git a/src/uploadconfig.d.ts b/src/uploadconfig.d.ts
+index 2578c16e4b12af409aa52ad76d673392c16b4270..ad65db30ed987ab0d0c8a6a818de5382519e2804 100644
+--- a/src/uploadconfig.d.ts
++++ b/src/uploadconfig.d.ts
+@@ -62,7 +62,7 @@ export interface SimpleUploadConfig {
+      * {@glink features/images/image-upload/simple-upload-adapter#server-side-configuration "Server-side configuration"} section
+      * of the feature guide.
+      */
+-    headers?: Record<string, string>;
++    headers?: Record<string, string> | (() => Record<string, string>);
+     /**
+      * This flag enables the
+      * [`withCredentials`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials)

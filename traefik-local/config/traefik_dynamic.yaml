@@ -1,0 +1,124 @@
+# Copyright (C) 2025 Monadfix OÜ
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# See https://doc.traefik.io/traefik
+
+# The config for local development.
+
+tls:
+  certificates:
+    - certFile: REDACTED.pem
+      keyFile: REDACTED-key.pem
+
+http:
+  # What services are available (landing, etc)
+  #
+  # Note: host.docker.internal refers to the outside localhost; see https://stackoverflow.com/a/43541732/615030
+  services:
+    serverHttp:
+      loadBalancer:
+        servers:
+          - url: 'http://host.docker.internal:3000'
+    serverHttps:
+      loadBalancer:
+        servers:
+          - url: 'http://host.docker.internal:3001'
+    serverWebsocket:
+      loadBalancer:
+        servers:
+          - url: 'http://host.docker.internal:3002'
+    client:
+      loadBalancer:
+        servers:
+          - url: 'http://host.docker.internal:4000'
+    landing:
+      loadBalancer:
+        servers:
+          - url: 'http://host.docker.internal:4001'
+
+  # What should be routed where.
+  #
+  # For reading convenience, the rules are listed from highest to lowest priority. You *must* still explicitly use
+  # "priority:" to set priority.
+  routers:
+    # MIDDLEWARE: strip "www."
+    redirectWww:
+      rule: 'Host(`www.REDACTED`)'
+      service: 'landing' # doesn't matter
+      middlewares: ['redirect-www']
+      tls: {}
+      priority: 900
+
+    # SERVER: DOMAINS, SUBDOMAINS, API
+    customDomains:
+      rule: '!Host(`REDACTED`) && !HostRegexp(`{subdomain:.+}.REDACTED`)'
+      service: 'serverHttps' # SSL has to be done by the server itself
+      priority: 600
+    subdomains:
+      rule: 'HostRegexp(`{subdomain:.+}.REDACTED`)'
+      service: 'serverHttp' # Traefik does SSL termination
+      tls: {}
+      priority: 500
+    apiSocket:
+      rule: >-
+        Host(`REDACTED`) &&
+        (Path(`/api/socket.io`) || PathPrefix(`/api/socket.io/`))
+      service: 'serverWebsocket'
+      tls: {}
+      priority: 400
+    api:
+      rule: >-
+        Host(`REDACTED`) &&
+        (Path(`/api`) || PathPrefix(`/api/`))
+      service: 'serverHttp'
+      tls: {}
+      priority: 300
+
+    # WEBPACK DEV SERVER (only for local dev)
+    wdsWebsocket:
+      rule: 'Path(`/ws`) || PathPrefix(`/ws/`)'
+      service: 'client'
+      tls: {}
+      priority: 200
+
+    # LANDING
+    assets:
+      rule: >-
+        Host(`REDACTED`) &&
+          (PathPrefix(`/_next/`) || PathPrefix(`/landing-assets/`) ||
+           Path(`/pricing`) || Path(`/features`))
+      service: 'landing'
+      tls: {}
+      priority: 150
+    loggedOut:
+      rule: 'Host(`REDACTED`) && Path(`/`) && !HeadersRegexp(`Cookie`, `authToken=`)'
+      service: 'landing'
+      tls: {}
+      priority: 140
+
+    # CLIENT: app
+    app:
+      rule: 'Host(`REDACTED`)'
+      service: 'client'
+      tls: {}
+      priority: 100
+
+  middlewares:
+    # Redirect www URLs to their non-www equivalent
+    redirect-www:
+      redirectregex:
+        regex: "^https?://www\\.(.+)"
+        replacement: 'https://${1}'
+        permanent: true

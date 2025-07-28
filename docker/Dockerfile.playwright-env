@@ -1,0 +1,30 @@
+# Run playwright inside this container against a local instance of Brick (on the host machine)
+
+ARG PLAYWRIGHT_VERSION
+
+FROM mcr.microsoft.com/playwright:v${PLAYWRIGHT_VERSION}
+
+WORKDIR /root
+
+# Install mkcert (note: no specific need for v1.4.4, just latest at the time of writing)
+RUN curl -L "https://dl.filippo.io/mkcert/v1.4.4?for=linux/amd64" -o mkcert && \
+  chmod +x mkcert && \
+  mv mkcert /usr/local/bin/
+
+# Using gost instead of socat because socat says "broken pipe" sometimes
+RUN curl -L "https://github.com/go-gost/gost/releases/download/v3.0.0-rc10/gost_3.0.0-rc10_linux_amd64.tar.gz" -o gost.tar.gz && \
+  tar -xzf gost.tar.gz && \
+  mv gost /usr/local/bin/gost && \
+  rm gost.tar.gz
+
+# Give us pnpm! (We should add new versions here when we update package.json)
+RUN corepack enable && corepack install --global --cache-only pnpm@8.14.0
+
+COPY docker/playwright-env-entrypoint.sh ./
+
+WORKDIR /brick
+
+# Expose the mkcert root CA to the container. This is so that inside the container we can trust the mkcert CA. Otherwise we get: "Error: page.goto: net::ERR_CERT_AUTHORITY_INVALID"
+VOLUME /mkcert-ca
+
+ENTRYPOINT ["/bin/bash", "/root/playwright-env-entrypoint.sh"]

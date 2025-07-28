@@ -1,0 +1,282 @@
+/**
+ * Copyright (C) 2025 Monadfix OÜ
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import url('./ckeditor.css');
+@import url('./themeVariables.css');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --color-primary: 232, 18, 92;
+  --secondary-color: 112, 103, 207;
+  --bg-disabled-btn: #ddd;
+}
+
+.color-primary {
+  color: rgb(var(--color-primary));
+}
+
+.color-secondary {
+  color: rgb(var(--secondary-color));
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.App,
+#root {
+  height: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+body {
+  margin: 0;
+  color: #272727;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  font-family: 'Lato', sans-serif;
+  font-size: 115%;
+}
+
+.page p,
+.page li,
+.page figcaption {
+  line-height: 160%;
+}
+
+.page h2,
+.page h3,
+.page h4 {
+  margin-top: 1.5em;
+  line-height: 140%;
+}
+
+.page iframe {
+  max-width: 100%;
+}
+
+.page-title {
+  margin-top: 4rem;
+  font-size: 230%;
+  line-height: 130%;
+  margin-bottom: 0.75em;
+}
+
+.page-preview-item hr {
+  margin: 30px 0;
+}
+
+.page .ck-content blockquote {
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0.67rem 0;
+}
+
+h2 {
+  font-size: 1.875rem;
+  margin: 0.75rem 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 0.83rem 0;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin: 0.91rem 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 0.83rem;
+  margin: 1.5rem 0;
+}
+
+h6 {
+  font-size: 0.75rem;
+  margin: 1.67rem 0;
+}
+
+p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+pre {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+a {
+  color: #2b6cb0;
+}
+
+a:not(.no-underline):hover {
+  text-decoration: underline;
+}
+
+.color-inherit {
+  color: inherit;
+}
+
+textarea {
+  resize: both;
+}
+
+#fc_frame,
+#fc_frame.fc-widget-normal {
+  z-index: 1000 !important;
+}
+
+.bg-main {
+  background: #e8125c;
+}
+
+.color-main {
+  color: #e8125c;
+}
+
+@keyframes anim-open {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-close {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+}
+
+.embedly-card iframe {
+  visibility: visible !important;
+}
+
+.page-preview-item {
+  width: 100%;
+  max-width: 900px;
+  padding-left: 96px;
+  padding-right: 96px;
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 640px) {
+  .page-preview-item {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .page-preview-item {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.page-tree-item {
+  @apply flex cursor-pointer hover:bg-gray-300 px-3;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: rgb(39, 39, 39);
+  text-decoration: none !important;
+}
+
+.page-tree-item_active {
+  background: #e3e3e3;
+}
+
+.MuiRadio-colorSecondary.Mui-checked {
+  color: rgb(var(--color-primary)) !important;
+}
+
+.react-tabs__tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgb(76, 76, 76);
+  letter-spacing: 1.6px;
+  cursor: pointer;
+}
+
+.react-tabs__tab {
+  padding: 10px 2px;
+  flex: 1;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+.react-tabs__tab--selected {
+  font-weight: 700;
+  border-bottom: 2px solid rgb(232 18 92 / 0.59);
+}
+
+body div.tippy-content {
+  padding: unset;
+}
+
+.link-styled-btn {
+  color: #2b6cb0;
+  cursor: pointer;
+}
+
+.link-styled-btn:hover {
+  text-decoration: underline;
+}

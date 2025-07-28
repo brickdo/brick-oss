@@ -1,0 +1,13 @@
+{
+  "name": "@emotion/styled-base",
+  "description": "A shim for @emotion/styled-base@10, reexporting @emotion/styled@11",
+  "main": "index.js",
+  "version": "10.0.0-override",
+  "dependencies": {
+    "@emotion/styled": "^11"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11",
+    "react": "*"
+  }
+}

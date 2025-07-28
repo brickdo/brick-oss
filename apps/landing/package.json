@@ -1,0 +1,24 @@
+{
+  "name": "@brick/landing",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev -p 4001",
+    "build": "next build",
+    "start": "next start -p 4001",
+    "start:prod": "NODE_ENV=production next start -p 4001",
+    "check": "tsc --noEmit",
+    "lint": "next lint"
+  },
+  "//dependencies": {
+    "//": "If we ever depend on internal packages, we must make sure 'next dev' is restarted when they are changed. As of Mar 21, 2024, there are reports on Github that 'next dev' doesn't watch node_modules."
+  },
+  "dependencies": {
+    "@brick/lib": "workspace:*",
+    "@brick/misc": "workspace:*",
+    "next": "^12.0.7",
+    "next-images": "^1.8.4"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

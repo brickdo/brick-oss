@@ -1,0 +1,9 @@
+{
+  "name": "@emotion/css",
+  "description": "A shim for @emotion/css@10, reexporting @emotion/react",
+  "main": "index.js",
+  "version": "10.0.0-override",
+  "dependencies": {
+    "@emotion/react": "^11"
+  }
+}

@@ -1,0 +1,25 @@
+# Brick landing
+
+ARG NODE_VERSION
+FROM node:${NODE_VERSION}
+
+WORKDIR /usr/brick
+
+# Set up corepack
+RUN corepack enable
+
+# Install dependencies (this layer will be cached as long as nothing here changes)
+COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
+COPY overrides ./overrides
+RUN pnpm i --frozen-lockfile
+
+# staging | prod
+ARG ENV
+
+# Build the app
+COPY apps ./apps
+RUN pnpm run setEnv:${ENV}
+RUN pnpm exec turbo build -F landing
+
+CMD [ "pnpm", "run", "start:landing:prod" ]

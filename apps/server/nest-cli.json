@@ -1,0 +1,73 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/brick/src",
+  "compilerOptions": {
+    "assets": [
+      {
+        "include": "**/*.css",
+        "watchAssets": true,
+        "outDir": "./dist/apps/brick/src"
+      },
+      {
+        "include": "**/*.scss",
+        "watchAssets": true,
+        "outDir": "./dist/apps/brick/src"
+      },
+      {
+        "include": "**/*.html",
+        "watchAssets": true,
+        "outDir": "./dist/apps/brick/src"
+      }
+    ],
+    "tsConfigPath": "apps/brick/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/brick",
+  "projects": {
+    "brick": {
+      "type": "application",
+      "root": "apps/brick",
+      "entryFile": "main",
+      "sourceRoot": "apps/brick/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/brick/tsconfig.app.json"
+      }
+    },
+    "tg-bot": {
+      "type": "application",
+      "root": "apps/tg-bot",
+      "entryFile": "main",
+      "sourceRoot": "apps/tg-bot/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/tg-bot/tsconfig.app.json"
+      }
+    },
+    "db": {
+      "type": "library",
+      "root": "libs/db",
+      "entryFile": "index",
+      "sourceRoot": "libs/db/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/db/tsconfig.lib.json"
+      }
+    },
+    "constants": {
+      "type": "library",
+      "root": "libs/constants",
+      "entryFile": "index",
+      "sourceRoot": "libs/constants/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/constants/tsconfig.lib.json"
+      }
+    },
+    "storages": {
+      "type": "library",
+      "root": "libs/storages",
+      "entryFile": "index",
+      "sourceRoot": "libs/storages/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/storages/tsconfig.lib.json"
+      }
+    }
+  }
+}

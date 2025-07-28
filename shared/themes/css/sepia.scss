@@ -1,0 +1,303 @@
+/**
+ * Copyright (C) 2025 Monadfix OÜ
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// https://github.com/bradleytaunt/ET-Jekyll/blob/master/_includes/style.scss
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// Novel Mono
+@import url('https://use.typekit.net/ryn8uso.css');
+
+:root {
+  --sidebar-bg-color: #faf1e5;
+}
+
+.page-title,
+.page-preview-item,
+.ck.ck-content,
+.ck.ck-editor__editable_inline {
+  padding-left: 40px;
+}
+
+.ck.ck-block-toolbar-button {
+  // A bit less than 40px so that there's room between the button and the editor.
+  margin-left: 34px;
+}
+
+@media screen and (max-width: 640px) {
+  .page-title,
+  .page-preview-item,
+  .ck.ck-content,
+  .ck.ck-editor__editable_inline {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .ck.ck-block-toolbar-button {
+    margin-left: 24px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .page-title,
+  .page-preview-item,
+  .ck.ck-content,
+  .ck.ck-editor__editable_inline {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .ck.ck-block-toolbar-button {
+    margin-left: 24px;
+  }
+}
+
+.page,
+.page * {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+}
+
+.page,
+.rendered-page,
+.rendered-page-content-body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  background: #fff6eb;
+  color: #111;
+  counter-reset: sidenote-counter;
+  font-size: 1.4rem;
+  font-family: 'Alegreya', 'Book Antiqua', Georgia, serif;
+
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #111;
+
+    &:hover {
+      color: rgb(220, 40, 40);
+    }
+  }
+}
+
+.navigation-header {
+  span.text-sm {
+    line-height: inherit;
+  }
+}
+
+.page {
+  padding-top: 5rem;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 0;
+    // text-transform: capitalize;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    font-style: normal;
+    margin-top: 2.6rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    margin-top: 4.2rem;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+    margin-top: 2.6rem;
+  }
+
+  p,
+  table,
+  blockquote,
+  pre,
+  img,
+  hr,
+  ul li,
+  ol li {
+    box-sizing: border-box;
+  }
+  //   .MathJax_SVG_Display {
+  //     max-width: 55% !important;
+  //   }
+  li ul li,
+  li ol li {
+    max-width: 100%;
+  }
+
+  blockquote {
+    font-style: italic !important;
+    margin: 0;
+    padding: 1rem 0 1rem 3rem;
+    border-left: none;
+    & > p:first-child {
+      margin-top: 0;
+    }
+    & > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  //   blockquote footer {
+  //     font-style: normal;
+  //     font-size: 1.1rem;
+  //     text-align: right;
+  //   }
+
+  pre {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: novel-mono-pro-extra-condens, 'Cousine', monospace;
+    font-size: 85%;
+    padding: 0 0.15em !important;
+  }
+
+  pre code {
+    padding: 0 !important;
+  }
+
+  figure {
+    align-items: flex-start;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  hr {
+    background: #777;
+    border: 0;
+    height: 1px;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  table {
+    border-collapse: separate !important;
+    border-spacing: 1.5rem 0.5rem !important;
+    border: none !important;
+    text-align: left !important;
+    width: 100% !important;
+
+    th {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      padding: 0;
+      border: none !important;
+      background: inherit !important;
+
+      &:not(:first-child) {
+        text-align: right !important;
+      }
+    }
+
+    thead th {
+      border-bottom: 1px solid #111 !important;
+    }
+  }
+
+  // CKEditor
+  .todo-list {
+    input[checked]:before {
+      background: transparent !important;
+      border-color: #111 !important;
+    }
+
+    input[checked]:after {
+      border-color: #111 !important;
+    }
+  }
+
+  @media (max-width: 850px) {
+    body {
+      padding: 10px;
+      width: calc(100% - 20px);
+    }
+
+    p,
+    table,
+    blockquote,
+    pre,
+    img,
+    hr,
+    ul li,
+    ol li {
+      max-width: 100%;
+    }
+
+    // .MathJax_SVG_Display {
+    //   max-width: 100% !important;
+    // }
+
+    // nav {
+    //   .menu-icon {
+    //     display: inline-block;
+    //   }
+
+    //   ul.site-nav {
+    //     display: none;
+
+    //     li {
+    //       display: block;
+    //       margin: 1rem 0;
+    //       width: 100%;
+
+    //       a,
+    //       a:visited {
+    //         display: block;
+    //         width: 100%;
+    //       }
+    //     }
+    //   }
+    // }
+
+    figure {
+      flex-direction: column;
+    }
+  }
+}
+
+// In editor, we want a few special styles
+.brick-editor .ck-content {
+  // Invisible tables are ok for rendered content but not for editing
+  .table table td {
+    border-right: 1px dashed rgb(210, 210, 210) !important;
+    border-bottom: 1px dashed rgb(210, 210, 210) !important;
+  }
+  .table table th {
+    border-right: 1px dashed rgb(210, 210, 210) !important;
+  }
+}

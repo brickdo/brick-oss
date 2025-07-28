@@ -1,0 +1,14 @@
+{
+  "name": "@brick/lib",
+  "description": "Shared code *with clear semantics*, usually not-Brick-specific",
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

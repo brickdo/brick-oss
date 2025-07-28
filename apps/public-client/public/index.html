@@ -1,0 +1,91 @@
+<!--
+ Copyright (C) 2025 Monadfix OÜ
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+{{! This template uses Handlebars. The variables are filled in by the server — see serve.service.ts.
+    When running public-client directly, the variables are stripped by a Handlebars webpack loader.
+  }}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  {{#if enableAnalytics}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=REDACTED"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'REDACTED');
+    </script>
+  {{/if}}
+
+  {{!
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    }}
+
+  {{! The public-client app's styles will be injected here }}
+  HTMLInlineCSSWebpackPlugin_injection_point
+
+  {{{head}}}
+</head>
+
+<body>
+  <div id="root">{{{prerendered}}}</div>
+  <script>
+    (function (w, d) {
+      var id = 'embedly-platform', n = 'script';
+      if (!d.getElementById(id)) {
+        w.embedly = w.embedly || function () { (w.embedly.q = w.embedly.q || []).push(arguments); };
+        var e = d.createElement(n); e.id = id; e.async = 1;
+        e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+        var s = d.getElementsByTagName(n)[0];
+        s.parentNode.insertBefore(e, s);
+      }
+    })(window, document);
+    window.onload = function () {
+      // Using the key (and getting rid of the embedly branding) requires $99/mo subscription
+      //
+      // if (embedly) {
+      //   embedly("defaults", {
+      //     cards: {
+      //       key: 'REDACTED'
+      //     }
+      //   })
+      // }
+      document.querySelectorAll('oembed[url]').forEach(oembed => {
+        const anchor = document.createElement('a')
+        anchor.setAttribute('href', oembed.getAttribute('url'))
+
+        // We have figure.media > oembed[url], and we have to replace the whole <figure> with the anchor
+        // before running embedly
+        const figure = oembed.parentNode
+        figure.parentNode.replaceChild(anchor, figure)
+
+        // @ts-ignore
+        if (embedly) {
+          // @ts-ignore
+          embedly('card', anchor)
+        }
+      })
+    }
+    </script>
+</body>
+
+</html>

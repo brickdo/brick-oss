@@ -1,0 +1,21 @@
+// A dummy tsconfig for files not covered by all other tsconfigs
+
+{
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "noEmit": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "module": "node16",
+    "esModuleInterop": true
+  },
+  "include": [
+    ".eslintrc.js",
+    "dev.ts",
+    "playwright.config.ts",
+    // Ideally scripts should be in a separate folder and have their own tsconfig
+    "tools/create-user.ts",
+    "scripts/validate-deps.ts"
+  ]
+}

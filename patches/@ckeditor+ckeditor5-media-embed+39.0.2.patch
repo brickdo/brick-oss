@@ -1,0 +1,77 @@
+# Original code:
+#
+# Copyright: (c) 2003–2025, [CKSource Holding sp. z o.o.](https://cksource.com)
+# License: GPL-2.0-or-later, relicensed here under GPL-3.0-or-later.
+#
+# Modifications:
+#
+# Copyright: (c) 2025 Monadfix OÜ
+# License: GPL-3.0-or-later
+#
+diff --git a/src/automediaembed.js b/src/automediaembed.js
+index e1863d8..ae91eb4 100644
+--- a/src/automediaembed.js
++++ b/src/automediaembed.js
+@@ -101,6 +101,12 @@ export default class AutoMediaEmbed extends Plugin {
+             urlRange.detach();
+             return;
+         }
++        const media = mediaRegistry._getMedia(url);
++        // Do not embed if 'disableAutoEmbed'
++        if (media.disableAutoEmbed) {
++          urlRange.detach();
++          return;
++        }
+         const mediaEmbedCommand = editor.commands.get('mediaEmbed');
+         // Do not anything if media element cannot be inserted at the current position (#47).
+         if (!mediaEmbedCommand.isEnabled) {
+diff --git a/src/mediaembedconfig.d.ts b/src/mediaembedconfig.d.ts
+index c911cda..3c964df 100644
+--- a/src/mediaembedconfig.d.ts
++++ b/src/mediaembedconfig.d.ts
+@@ -275,4 +275,8 @@ export interface MediaEmbedProvider {
+      * is `true`, the rendering function **will always** be used for the media in the editor data output.
+      */
+     html?: (match: RegExpMatchArray) => string;
++    /**
++     * Patched-in for Brick. Disable auto embeds, while still allowing embeds via the "Media" button.
++     */
++    disableAutoEmbed?: boolean;
+ }
+diff --git a/src/mediaregistry.d.ts b/src/mediaregistry.d.ts
+index 76a39dc..4e8ba0c 100644
+--- a/src/mediaregistry.d.ts
++++ b/src/mediaregistry.d.ts
+@@ -55,7 +55,7 @@ export default class MediaRegistry {
+      * @param url The URL of the media.
+      * @returns The `Media` instance or `null` when there is none.
+      */
+-    private _getMedia;
++    public _getMedia(url: string): Media;
+     /**
+      * Tries to match `url` to `pattern`.
+      *
+diff --git a/src/mediaregistry.js b/src/mediaregistry.js
+index 5423070..d3dfd74 100644
+--- a/src/mediaregistry.js
++++ b/src/mediaregistry.js
+@@ -81,7 +81,9 @@ export default class MediaRegistry {
+             for (const subPattern of pattern) {
+                 const match = this._getUrlMatches(url, subPattern);
+                 if (match) {
+-                    return new Media(this.locale, url, match, previewRenderer);
++                    const media = new Media(this.locale, url, match, previewRenderer);
++                    if (definition.disableAutoEmbed) media.disableAutoEmbed = true;
++                    return media;
+                 }
+             }
+         }
+@@ -119,7 +121,7 @@ export default class MediaRegistry {
+  *
+  * It can be rendered to the {@link module:engine/view/element~Element view element} and used in the editing or data pipeline.
+  */
+-class Media {
++export class Media {
+     constructor(locale, url, match, previewRenderer) {
+         this.url = this._getValidUrl(url);
+         this._locale = locale;

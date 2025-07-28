@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build", "copy-frontend-builds"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      // FIXME: For whatever reason, dev mode also wants to have a build of the public client:
+      //
+      // @brick/server:dev: Error: Cannot find module '[...]/brick/apps/public-client/build/server-bundle.js'
+      "dependsOn": ["^dev", "copy-frontend-builds"]
+    },
+    "start": {
+      "dependsOn": ["^build", "copy-frontend-builds"]
+    },
+    "copy-frontend-builds": {
+      "dependsOn": ["@brick/public-client#build", "@brick/client#build"],
+      "outputs": ["../../build/**"]
+    }
+  }
+}
