@@ -14,7 +14,7 @@ COPY patches ./patches
 COPY overrides ./overrides
 RUN pnpm i --frozen-lockfile
 
-# staging | prod
+# prod
 ARG ENV
 
 # Build the app
