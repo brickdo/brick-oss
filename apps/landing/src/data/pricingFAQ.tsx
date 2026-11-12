@@ -17,8 +17,6 @@
 
 import { IFAQData } from '../components/FAQ'
 
-const emailSupportLink = <a href='mailto:support@brick.do'>support@brick.do</a>
-
 export const pricingFAQdata: IFAQData[] = [
   {
     categoryName: 'General questions',
@@ -33,8 +31,7 @@ export const pricingFAQdata: IFAQData[] = [
         answer: (
           <div>
             We offer collaborative workspaces for teams. The price depends on the number of users
-            belonging to your workspaces. To request a trial, please contact us in the support chat
-            or write at {emailSupportLink}.
+            belonging to your workspaces.
           </div>
         ),
       },
@@ -58,45 +55,12 @@ export const pricingFAQdata: IFAQData[] = [
     ],
   },
   {
-    categoryName: 'Payment questions',
-    questions: [
-      {
-        questionTitle: 'Can I pay via PayPal or bank transfer?',
-        answer: (
-          <div>
-            Yes. Contact us in the support chat or by writing at {emailSupportLink} to learn about
-            the available options.
-          </div>
-        ),
-      },
-      {
-        questionTitle: 'Do you offer education/student discounts?',
-        answer: (
-          <div>
-            Yes. Please contact us in the support chat or by writing at {emailSupportLink} to
-            arrange the discount.
-          </div>
-        ),
-      },
-    ],
-  },
-  {
     categoryName: 'Refunds and cancellations',
     questions: [
       {
         questionTitle: 'How do I cancel my subscription?',
         answer:
           'You can cancel your subscription in the billing settings in-app. Your plan will be downgraded immediately.',
-      },
-      {
-        questionTitle: 'Can I request a refund?',
-        answer: (
-          <div>
-            When you cancel a monthly subscription, you can request a full refund for your last
-            payment in the support chat or by writing at {emailSupportLink}. When you cancel an
-            annual subscription, you can request a refund within 30 days of your last payment.
-          </div>
-        ),
       },
       {
         questionTitle: 'What happens with my pages if I cancel my subscription?',

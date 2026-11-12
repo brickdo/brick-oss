@@ -180,7 +180,6 @@ const options: OptionsTippyItem[] = [
   {
     type: 'button',
     title: 'Contact support via chat',
-    subtitle: 'We are usually available Monday–Friday. You can also email us at support@brick.do.',
     onClick: hide => {
       hide()
       openSupportChat()
