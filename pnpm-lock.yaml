@@ -511,9 +511,6 @@ importers:
       typeorm:
         specifier: ^0.2.41
         version: 0.2.41(ioredis@4.28.2)
-      universal-analytics:
-        specifier: ^0.5.3
-        version: 0.5.3
       url-loader:
         specifier: ^4.1.1
         version: 4.1.1(file-loader@6.2.0)(webpack@5.65.0)
@@ -635,9 +632,6 @@ importers:
       '@types/serialize-javascript':
         specifier: ^5.0.1
         version: 5.0.1
-      '@types/universal-analytics':
-        specifier: ^0.4.5
-        version: 0.4.5
       '@types/uuid':
         specifier: ^8.3.3
         version: 8.3.3
@@ -7466,10 +7460,6 @@ packages:
   /@types/trusted-types@2.0.2:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
     dev: false
-
-  /@types/universal-analytics@0.4.5:
-    resolution: {integrity: sha512-Opb+Un786PS3te24VtJR/QPmX00P/pXaJQtLQYJklQefP4xP0Ic3mPc2z6SDz97OrITzR+RHTBEwjtNRjZ/nLQ==}
-    dev: true
 
   /@types/uuid@8.3.3:
     resolution: {integrity: sha512-0LbEEx1zxrYB3pgpd1M5lEhLcXjKJnYghvhTRgaBeUivLHMDM1TzF3IJ6hXU2+8uA4Xz+5BA63mtZo5DjVT8iA==}
@@ -20216,16 +20206,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       crypto-random-string: 2.0.0
-    dev: false
-
-  /universal-analytics@0.5.3:
-    resolution: {integrity: sha512-HXSMyIcf2XTvwZ6ZZQLfxfViRm/yTGoRgDeTbojtq6rezeyKB0sTBcKH2fhddnteAHRcHiKgr/ACpbgjGOC6RQ==}
-    engines: {node: '>=12.18.2'}
-    dependencies:
-      debug: 4.3.4
-      uuid: 8.3.2
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /universalify@0.1.2:

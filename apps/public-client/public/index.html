@@ -25,16 +25,6 @@
 <head>
   <meta charset="utf-8" />
 
-  {{#if enableAnalytics}}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=REDACTED"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'REDACTED');
-    </script>
-  {{/if}}
-
   {{!
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/

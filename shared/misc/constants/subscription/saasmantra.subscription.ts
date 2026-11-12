@@ -65,7 +65,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode2]: {
@@ -99,7 +98,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode3]: {
@@ -133,7 +131,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode4]: {
@@ -167,7 +164,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode5]: {
@@ -201,7 +197,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode6]: {
@@ -235,7 +230,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode7]: {
@@ -269,7 +263,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode8]: {
@@ -303,7 +296,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode9]: {
@@ -337,7 +329,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [SaasMantraSubscriptionId.saasMantraCode10]: {
@@ -371,7 +362,6 @@ export const SaasMantraSubscriptionPlans: SubscriptionPlansList<SaasMantraSubscr
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
 } as const

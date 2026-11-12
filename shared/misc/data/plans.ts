@@ -73,7 +73,7 @@ export const plans: IPlan[] = [
       Hosting: [
         { content: 'Image optimization & CDN' },
         {
-          content: 'Add any third-party services (e.g. Google Analytics, Intercom)',
+          content: 'Add any third-party services (e.g. Intercom)',
         },
         { content: 'Page visit tracking', isDowngrade: true },
       ],
@@ -117,7 +117,7 @@ export const plans: IPlan[] = [
       Hosting: [
         { content: 'Image optimization & CDN' },
         {
-          content: 'Add any third-party services (e.g. Google Analytics, Intercom)',
+          content: 'Add any third-party services (e.g. Intercom)',
         },
         { content: 'Page visit tracking', isDowngrade: true },
       ],
@@ -163,7 +163,7 @@ export const plans: IPlan[] = [
       Hosting: [
         { content: 'Image optimization & CDN' },
         {
-          content: 'Add any third-party services (e.g. Google Analytics, Intercom)',
+          content: 'Add any third-party services (e.g. Intercom)',
         },
         { content: 'We do not inject our own tracking' },
       ],

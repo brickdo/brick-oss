@@ -38,7 +38,6 @@ export type SubscriptionPlan = {
   entities: { [key in SubscriptionPlanEntityName]: PricingEntityOptions }
   canWeeklyBackups: boolean
   haveFontSettings: boolean
-  mandatoryAnalytics: boolean
   privatePages: boolean
 }
 
