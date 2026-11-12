@@ -26,7 +26,6 @@ export type GenericSettingsTabProps = {
   content: ReactNode
   isActive?: boolean
   disabled?: boolean
-  showPremiumBadge?: boolean
 }
 
 export type GenericSettingsProps = {

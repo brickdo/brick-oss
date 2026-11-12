@@ -24,7 +24,6 @@ import {
   RefObject,
 } from 'react'
 import { Dialog } from 'evergreen-ui'
-import { NavLink } from 'react-router-dom'
 
 interface Handles {
   show: () => void
@@ -67,11 +66,7 @@ const OutOfDomainsDialog: ForwardRefRenderFunction<Handles> = (props, ref) => {
       <div className='text-2xl'>
         You are out of available domains.
         <br />
-        Delete some or{' '}
-        <NavLink onClick={hide} to='/settings/subscription'>
-          upgrade subscription plan
-        </NavLink>{' '}
-        to get more.
+        Delete an unused domain before adding another. Paid upgrades are no longer available.
         <div className='flex justify-end mt-2'>
           <button
             className='border border-gray-300 py-1 px-2 rounded hover:bg-gray-300'

@@ -59,12 +59,10 @@ const trimWwwMiddleware = (req: Request, res: Response, next: NextFunction) => {
 if (isProduction) {
   process.on('unhandledRejection', (reason: any, promise) => {
     console.log('Unhandled Rejection at:', 'stack', reason?.stack || reason)
-
   })
 }
 
 async function bootstrap() {
-
   const server = express()
 
   const httpPort = process.env.HTTP_PORT
@@ -78,7 +76,6 @@ async function bootstrap() {
       ...(!isProduction
         ? {
             cors: {
-
               origin: /^https:\/\/REDACTED:/,
               optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
             },
@@ -136,17 +133,7 @@ async function bootstrap() {
     )
   }
 
-  app.use(
-    bodyParser.json({
-      // quick solution for stripe verifying hooks doubles RAM usage for every request
-
-      // https://stackoverflow.com/questions/54346465/access-raw-body-of-stripe-webhook-in-nest-jssw
-      verify(req, res, buf) {
-        // @ts-ignore
-        req.rawBody = buf
-      },
-    }),
-  )
+  app.use(bodyParser.json())
   app.use(cookieParser())
 
   // We listen on http for the normal server & on https for custom domains, because for custom domains
@@ -155,7 +142,11 @@ async function bootstrap() {
   http.createServer(server).listen(httpPort)
   https.createServer(httpsOptions, server).listen(httpsPort)
   appLogger.info(`App is running`, {
-    ports: { http: httpPort, https: httpsPort, websocket: process.env.WEBSOCKET_PORT },
+    ports: {
+      http: httpPort,
+      https: httpsPort,
+      websocket: process.env.WEBSOCKET_PORT,
+    },
   })
 
   const certificatesService = app.get(CertificatesService)

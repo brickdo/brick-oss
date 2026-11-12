@@ -20,10 +20,6 @@ import { ApiModule } from './api.module'
 import { MyLoggerModule } from './logger/my-logger.module'
 import { ServeModule } from './serve/serve.module'
 import { ScheduleModule } from '@nestjs/schedule'
-import { SubscriptionCronService } from './subscription/subscription.cron.service'
-import { StripeModule } from './stripe/stripe.module'
-
-
 
 @Module({
   // `ServeModule` should be passed last because its controller doesn't have any route prefix

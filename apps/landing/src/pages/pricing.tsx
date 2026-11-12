@@ -19,14 +19,8 @@ import styled from '@emotion/styled'
 
 import { FAQ } from '../components/FAQ'
 import { PageContainer } from '../components/PageContainer'
-import { Plans } from '../components/Pricing/Plans'
-import { plans } from '@brick/misc/data/plans'
 import { pricingFAQdata } from '../data/pricingFAQ'
 import { LandingColors, LandingMediaQuery } from '@brick-shared/styles/landing'
-import axios from 'axios'
-import { NextPageContext } from 'next'
-import { useUser } from './_app'
-import { useEffect } from 'react'
 
 export type User = {
   id: string
@@ -38,42 +32,16 @@ export type User = {
   periodicBackups: boolean
 }
 
-export default function Pricing({ user }: { user?: User }) {
-  const { setUser } = useUser()
-
-  useEffect(() => {
-    setUser(user)
-  }, [user, setUser])
-
+export default function Pricing() {
   return (
     <>
       <Containter>
-        <Title>Choose the plan</Title>
-        <Desc>Pay by month or the year, and cancel at any time.</Desc>
-        <Plans user={user} plans={plans} />
+        <Title>Brick is free</Title>
+        <Desc>Brick no longer sells paid plans or bills existing accounts.</Desc>
         <FAQ data={pricingFAQdata} />
       </Containter>
     </>
   )
-}
-
-export async function getServerSideProps(context: NextPageContext) {
-  let user
-  try {
-    const response = await axios.get(`https://${process.env.PUBLICVAR_BRICK_HOST!}/api/profile`, {
-      headers: {
-        cookie: context?.req?.headers.cookie || '',
-      },
-    })
-    user = response?.data || user
-  } catch (error) {
-    console.log(error)
-  }
-  return {
-    props: {
-      user,
-    },
-  }
 }
 
 const Title = styled.h1`

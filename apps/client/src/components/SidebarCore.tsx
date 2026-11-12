@@ -20,7 +20,6 @@ import { LogoutBtn } from './LogoutBtn'
 import css from 'styled-jsx/css'
 import { FiSettings } from '@react-icons/all-files/fi/FiSettings'
 import { NavLink } from 'react-router-dom'
-import SubscriptionUpgradeBadge from './SubscriptionUpgradeBadge'
 import { checkIsMobile } from '../utils'
 import WorkspaceSelectDropdownBtn from './WorkspaceSelectDropdownBtn'
 import { useActions } from '../store'
@@ -57,8 +56,6 @@ const SidebarCore = () => {
         <div className='max-h-full overflow-auto flex-1 mb-10'>
           <DoubleTreePages />
         </div>
-
-        <SubscriptionUpgradeBadge />
       </div>
       <style jsx>{style}</style>
     </div>

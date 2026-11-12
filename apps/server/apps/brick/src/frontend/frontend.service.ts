@@ -22,7 +22,7 @@ import { WorkspaceService } from '@brick/workspace/workspace.service'
 import { cloneDeep } from 'lodash'
 import { PublicAddressService } from '@brick/public-address/public-address.service'
 import { UserService } from '@brick/user/user.service'
-import { SubscriptionPlans } from '@brick/misc/constants/subscription'
+import { DefaultSubscriptionPlan, SubscriptionPlans } from '@brick/misc/constants/subscription'
 
 export type ClientAppInitialProps = Awaited<
   ReturnType<FrontendService['getAppInitialProps']>
@@ -76,11 +76,8 @@ export class FrontendService {
           if (!workspaceOwnerUser) {
             throw new InternalServerErrorException('Workspace owner user not found')
           }
-          const ownerSubscriptionPlan = SubscriptionPlans[workspaceOwnerUser.subscriptionPlan]
-
-          if (!ownerSubscriptionPlan) {
-            throw new InternalServerErrorException('Workspace owner subscription plan not found')
-          }
+          const ownerSubscriptionPlan =
+            SubscriptionPlans[workspaceOwnerUser.subscriptionPlan] || DefaultSubscriptionPlan
 
           return {
             ...w,
@@ -104,7 +101,6 @@ export class FrontendService {
       .filter(x => !workspacesPagesIds.includes(x.id))
 
     const collaboratorPagesRoot = getCollaboratorPagesRoot()
-
 
     collaboratorPages.forEach(x => {
       const isParentAvailable = x.parentId && collaboratorPages.find(y => y.id === x.parentId)

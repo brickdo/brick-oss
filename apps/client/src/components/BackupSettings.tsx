@@ -22,7 +22,6 @@ import { ActionText } from './ActionText'
 import GenericSettingsSectionTitle from './GenericSettingsSectionTitle'
 import { openSupportChat } from '../support-chat'
 import { useActions, useAppState } from '../store'
-import PremiumBadge from './PremiumBadge'
 
 function BackupSettings(): ReactElement {
   const { user, userSubscriptionPlan: userSubscription, maintenanceMode } = useAppState()
@@ -55,10 +54,7 @@ function BackupSettings(): ReactElement {
       </div>
 
       <div className='flex flex-col mt-4'>
-        <GenericSettingsSectionTitle>
-          Weekly backups
-          <PremiumBadge />
-        </GenericSettingsSectionTitle>
+        <GenericSettingsSectionTitle>Weekly backups</GenericSettingsSectionTitle>
         <FormControlLabel
           control={
             <Checkbox
