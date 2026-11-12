@@ -115,10 +115,6 @@ export class SubscriptionAuthService {
     return userSubscription.privatePages
   }
 
-  haveMandatoryAnalytics(user: User) {
-    const userSubscription = this.subscriptionService.getUserSubscriptionPlan(user)
-    return userSubscription.mandatoryAnalytics
-  }
 
   haveFontSettings(user: User) {
     const userSubscription = this.subscriptionService.getUserSubscriptionPlan(user)

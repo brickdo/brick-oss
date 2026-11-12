@@ -29,9 +29,7 @@ import { pagesArrayToClientTree } from '@brick/utils/pagesArrayToClientTree'
 import { PublicAddressService } from '@brick/public-address/public-address.service'
 import { themes } from '@brick/themes'
 import { publicClientServerEntry, AppProps } from '@brick/frontend/frontend.provider'
-import ua from 'universal-analytics'
 import { renderScss } from '@brick/lib/scss'
-import { PageAnalyticsStatus } from '@brick/page/page.analytics'
 import * as NodeHtmlParser from 'node-html-parser'
 import loadLanguages from 'prismjs/components/'
 loadLanguages([
@@ -85,15 +83,11 @@ const isDesktop = (userAgent?: string) => {
 
 @Injectable()
 export class ServeService {
-  private analytics: ua.Visitor
-
   constructor(
     private readonly pageService: PageService,
     private readonly publicAddressService: PublicAddressService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {
-    this.analytics = ua('REDACTED')
-  }
+  ) {}
 
   async renderPage(req: Request, res: Response, page: Page) {
     const cache = await this.cacheManager.get(page.id)
@@ -149,24 +143,6 @@ export class ServeService {
     const { app, materialUiCss } = renderApp(props)
     const pageContentDescription = await this.pageService.pageContentToText(page.content)
     const canonicalLink = await this.pageService.getPageCanonicalLink(page)
-    const analyticsStatus = await this.pageService.getPageAnalyticsStatus(page.id)
-    if (analyticsStatus === PageAnalyticsStatus.serverSide) {
-      // All available params: https://github.com/peaksandpies/universal-analytics/blob/HEAD/AcceptableParams.md
-      this.analytics
-        .pageview(
-          {
-            documentLocationUrl: canonicalLink,
-            documentTitle: page.name,
-            ...(req.headers.referer && {
-              documentReferrer: req.headers.referer,
-            }),
-          },
-          err => {
-            if (err) console.error('Google Analytics call failed', err)
-          },
-        )
-        .send()
-    }
     const twitterSocialCard = `
       <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="${escape(page.name)}">
@@ -209,7 +185,6 @@ export class ServeService {
         ${pageStylesCss ? `<style> ${pageStylesCss} </style>` : ''}
         <script>window.__INITIAL_PROPS__ = ${serialize(props)} </script>
       `,
-        enableAnalytics: analyticsStatus === PageAnalyticsStatus.clientSide,
         prerendered: app,
       },
       (err, html) => {

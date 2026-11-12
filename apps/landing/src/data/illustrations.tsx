@@ -34,6 +34,6 @@ export const illustrations: IIllustration[] = [
   {
     image: <ScreenshotCustomization />,
     title: 'Full customization',
-    desc: 'Choose among several design themes. Add custom CSS if you need to. Embed HTML blocks and arbitrary JavaScript. Connect any third-party services like Intercom or Google Analytics.',
+    desc: 'Choose among several design themes. Add custom CSS if you need to. Embed HTML blocks and arbitrary JavaScript. Connect any third-party services like Intercom.',
   },
 ]

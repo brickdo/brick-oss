@@ -55,7 +55,6 @@ export const FreeSubscriptionPlans: SubscriptionPlansList<FreeSubscriptionId> = 
     },
     canWeeklyBackups: false,
     haveFontSettings: false,
-    mandatoryAnalytics: true,
     privatePages: false,
   },
 } as const

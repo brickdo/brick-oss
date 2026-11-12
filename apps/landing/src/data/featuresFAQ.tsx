@@ -67,7 +67,7 @@ export const featuresFAQdata: IFAQData[] = [
       {
         questionTitle: 'What integrations are available?',
         answer:
-          'Since we allow arbitrary HTML and JavaScript, you can use pretty much any third-party service. Examples include analytics (e.g. Google Analytics), chat widgets (e.g. Intercom), embedded forms (e.g. Jotform), and comments (e.g. Disqus).',
+          'Since we allow arbitrary HTML and JavaScript, you can use pretty much any third-party service. Examples include chat widgets (e.g. Intercom), embedded forms (e.g. Jotform), and comments (e.g. Disqus).',
       },
     ],
   },

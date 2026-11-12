@@ -64,8 +64,6 @@ import { FrontendSocketGateway } from '@brick/frontend/frontend.socket.gateway'
 import { canRolePerformPageAction, PageAction, UserPageRole } from './page.auth.rules'
 import { isUUID } from 'class-validator'
 import { UserService } from '@brick/user/user.service'
-import { SubscriptionPlans } from '@brick/misc/constants/subscription'
-import { PageAnalyticsStatus } from './page.analytics'
 import { NonNullableFields } from '@brick/types'
 
 export interface IMovePage {
@@ -481,24 +479,6 @@ export class PageService {
       throw new BadRequestException()
     }
     return page.content
-  }
-
-  async getPageAnalyticsStatus(pageId: Page['id']): Promise<PageAnalyticsStatus> {
-    const ownerId = await this.getPageOwnerId(pageId)
-    const user = await this.userService.getById(ownerId)
-
-    if (!user) {
-      throw new BadRequestException('Page owner not found')
-    }
-
-    if (
-      !SubscriptionPlans[user.subscriptionPlan] ||
-      SubscriptionPlans[user.subscriptionPlan]!.mandatoryAnalytics
-    ) {
-      return PageAnalyticsStatus.clientSide
-    } else {
-      return PageAnalyticsStatus.serverSide
-    }
   }
 
   async getPageIdByShortId(shortId: Page['shortId']) {

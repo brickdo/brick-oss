@@ -81,7 +81,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [StripePlanIdProd.monthly]: {
@@ -115,7 +114,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [StripePlanIdProd.yearly]: {
@@ -149,7 +147,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [StripePlanIdProd.monthly0621]: {
@@ -183,7 +180,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
     },
     canWeeklyBackups: true,
     haveFontSettings: true,
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [StripePlanIdProd.yearly0621]: {
@@ -217,7 +213,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
         exceedPerItemPriceId: null,
       },
     },
-    mandatoryAnalytics: false,
     privatePages: true,
   },
   [StripePlanIdProd.hobby]: {
@@ -251,7 +246,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
         exceedPerItemPriceId: null,
       },
     },
-    mandatoryAnalytics: true,
     privatePages: true,
   },
   [StripePlanIdProd.business]: {
@@ -285,7 +279,6 @@ export const StripeSubscriptionPlansProd: SubscriptionPlansList<StripePlanIdProd
         exceedPerItemPriceId: null,
       },
     },
-    mandatoryAnalytics: true,
     privatePages: true,
   },
 } as const
@@ -347,7 +340,6 @@ export const StripeSubscriptionPlansDev: SubscriptionPlansList<StripePlanIdDev> 
         exceedPerItemPriceId: null,
       },
     },
-    mandatoryAnalytics: true,
     privatePages: true,
   },
 
@@ -382,7 +374,6 @@ export const StripeSubscriptionPlansDev: SubscriptionPlansList<StripePlanIdDev> 
         exceedPerItemPriceId: null,
       },
     },
-    mandatoryAnalytics: true,
     privatePages: true,
   },
 } as const
