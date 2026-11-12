@@ -17,26 +17,15 @@
 
 import { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
-import { useActions, useAppState } from '../store'
 import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
-import SubscriptionBanner from '../components/SubscriptionBanner'
 
 type Props = {} & RouteConfigComponentProps
 
 const AppPage = (props: Props) => {
-  const { userSubscriptionPlan: userSubscription } = useAppState()
-  const { initStripe } = useActions()
-
-  const isPremiumUser = userSubscription?.id && !userSubscription.id.includes('free')
-
   useEffect(() => {
     // Empty event listener for unload to prevent "Back-Forward Cache"
     window.addEventListener('unload', () => {})
   }, [])
-
-  useEffect(() => {
-    initStripe()
-  }, [initStripe])
 
   return (
     <div className='flex relative h-full'>
@@ -45,8 +34,6 @@ const AppPage = (props: Props) => {
       <main className='flex flex-col flex-1 h-full max-h-full overflow-auto'>
         {renderRoutes(props.route?.routes)}
       </main>
-
-      {!isPremiumUser && <SubscriptionBanner />}
     </div>
   )
 }

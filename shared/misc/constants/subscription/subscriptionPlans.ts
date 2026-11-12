@@ -17,26 +17,16 @@
 
 import { FreeSubscriptionId, FreeSubscriptionPlans } from './free.subscription'
 import { SaasMantraSubscriptionId, SaasMantraSubscriptionPlans } from './saasmantra.subscription'
-import {
-  StripePlanId,
-  StripePlanIdDev,
-  StripePlanIdProd,
-  StripeSubscriptionPlans,
-} from './stripe.subscription'
 import { ObjectValues, SubscriptionPlan } from './types'
 
-export const SubscriptionPlans: {
-  [key in SubscriptionPlanId]?: SubscriptionPlan
-} = {
+export const SubscriptionPlans: Record<string, SubscriptionPlan | undefined> = {
   ...FreeSubscriptionPlans,
   ...SaasMantraSubscriptionPlans,
-  ...StripeSubscriptionPlans,
 } as const
 
 export const SubscriptionPlanId = {
   ...FreeSubscriptionId,
   ...SaasMantraSubscriptionId,
-  ...StripePlanId,
 } as const
 
 export const SubscriptionPlansNames: { [key in SubscriptionPlanId]: string } = {
@@ -51,22 +41,6 @@ export const SubscriptionPlansNames: { [key in SubscriptionPlanId]: string } = {
   [SubscriptionPlanId.saasMantraCode8]: 'SaaS Mantra 8 code',
   [SubscriptionPlanId.saasMantraCode9]: 'SaaS Mantra 9 code',
   [SubscriptionPlanId.saasMantraCode10]: 'SaaS Mantra 10 code',
-
-  [StripePlanIdDev.business]: 'DEV Business',
-  [StripePlanIdDev.hobby]: 'DEV Hobby',
-  [StripePlanIdDev.monthly]: 'DEV Monthly legacy',
-  [StripePlanIdDev.monthly0621]: 'DEV Monthly legacy',
-  [StripePlanIdDev.yearly]: 'DEV Yearly legacy',
-  [StripePlanIdDev.oldYearly]: 'DEV Yearly legacy',
-  [StripePlanIdDev.yearly0621]: 'DEV Yearly legacy',
-
-  [StripePlanIdProd.business]: 'Business',
-  [StripePlanIdProd.hobby]: 'Hobby',
-  [StripePlanIdProd.monthly]: 'Monthly legacy',
-  [StripePlanIdProd.monthly0621]: 'Monthly legacy',
-  [StripePlanIdProd.yearly]: 'Yearly legacy',
-  [StripePlanIdProd.oldYearly]: 'Yearly legacy',
-  [StripePlanIdProd.yearly0621]: 'Yearly legacy',
 } as const
 
 export type SubscriptionPlanId = ObjectValues<typeof SubscriptionPlanId>

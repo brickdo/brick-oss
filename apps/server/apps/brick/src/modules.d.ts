@@ -34,8 +34,6 @@ declare namespace NodeJS {
     DB_SSL: string
     DB_URL: string
     NODE_TLS_REJECT_UNAUTHORIZED: string
-    STRIPE_API_KEY: string
-    STRIPE_ENDPOINT_SECRET: string
     OAUTH_GITHUB_CLIENT_ID: string
     OAUTH_GITHUB_CLIENT_SECRET: string
     OAUTH_GOOGLE_CLIENT_ID: string

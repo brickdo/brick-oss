@@ -30,8 +30,7 @@ export const pricingFAQdata: IFAQData[] = [
         questionTitle: 'Can teams use Brick?',
         answer: (
           <div>
-            We offer collaborative workspaces for teams. The price depends on the number of users
-            belonging to your workspaces.
+            Existing accounts can share workspaces with their teams without a paid subscription.
           </div>
         ),
       },
@@ -48,24 +47,9 @@ export const pricingFAQdata: IFAQData[] = [
             >
               this help page
             </a>
-            . This applies both to free and premium plans.
+            .
           </div>
         ),
-      },
-    ],
-  },
-  {
-    categoryName: 'Refunds and cancellations',
-    questions: [
-      {
-        questionTitle: 'How do I cancel my subscription?',
-        answer:
-          'You can cancel your subscription in the billing settings in-app. Your plan will be downgraded immediately.',
-      },
-      {
-        questionTitle: 'What happens with my pages if I cancel my subscription?',
-        answer:
-          'All your published pages and domains will keep working. However, if you are past the free plan domain limit, you will not be able to add new domains unless you resubscribe.',
       },
     ],
   },

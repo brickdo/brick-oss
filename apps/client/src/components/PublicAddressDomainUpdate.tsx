@@ -18,7 +18,6 @@
 import { ReactElement, useState, useRef, useEffect, ChangeEvent } from 'react'
 import CustomInput from './CustomInput'
 import css from 'styled-jsx/css'
-import { NavLink } from 'react-router-dom'
 import { KEY_RETURN } from 'keycode-js'
 import isURL from 'validator/lib/isURL'
 import normalizeUrl from 'normalize-url'
@@ -44,7 +43,6 @@ type SslGenResult = {
   message?: string
   isError: boolean
 } | null
-
 
 function PublicAddressDomainUpdate({ pageId, publicAddress, hide }: Props): ReactElement {
   const { updateOrCreatePublicAddress, deletePublicAddress, generatePublicAddressSsl } =
@@ -204,7 +202,6 @@ function PublicAddressDomainUpdate({ pageId, publicAddress, hide }: Props): Reac
   const [isSslGenLoading, setIsSslGenLoading] = useState(false)
   const [sslGenResult, setSslGenResult] = useState<SslGenResult>(null)
 
-
   const generateSsl = async () => {
     if (!publicAddress) {
       return
@@ -271,11 +268,8 @@ function PublicAddressDomainUpdate({ pageId, publicAddress, hide }: Props): Reac
           />
           {!canUserHaveCustomDomains && (
             <span className='text-sm text-gray-600'>
-              (To use custom domain{' '}
-              <NavLink to='/settings/subscription' onClick={() => hide && hide()}>
-                upgrade your subscription
-              </NavLink>
-              )
+              (Custom domains are not available on this legacy plan. Paid upgrades are no longer
+              available.)
             </span>
           )}
 

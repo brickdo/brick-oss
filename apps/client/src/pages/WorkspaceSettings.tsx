@@ -23,14 +23,13 @@ import GoPrevPageBtn from '../components/GoPrevPageBtn'
 import GenericSettings, { GenericSettingsTabProps } from '../components/GenericSettings'
 import { useAppState } from '../store'
 import history from '../router/history'
-import PremiumBadge from '../components/PremiumBadge'
 
 type Props = {} & RouteConfigComponentProps
 
 type TabDescription = {
   to: string
   title: string
-} & Pick<GenericSettingsTabProps, 'disabled' | 'showPremiumBadge'>
+} & Pick<GenericSettingsTabProps, 'disabled'>
 
 function Settings(props: Props): ReactElement {
   const { location } = useHistory()
@@ -58,7 +57,6 @@ function Settings(props: Props): ReactElement {
     {
       to: '/workspace-settings/collaboration',
       title: 'Collaboration',
-      showPremiumBadge: isCollabTabDisabled,
       disabled: isCollabTabDisabled,
     },
   ]
@@ -81,7 +79,6 @@ function Settings(props: Props): ReactElement {
           }
         >
           {x.title}
-          {x.showPremiumBadge && <PremiumBadge />}
         </NavLink>
       ),
     }))

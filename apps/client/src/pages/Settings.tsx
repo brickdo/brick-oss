@@ -36,10 +36,6 @@ function Settings(props: Props): ReactElement {
       to: '/settings/backup',
       title: 'Export & backups',
     },
-    {
-      to: '/settings/subscription',
-      title: 'Subscription',
-    },
   ]
 
   const tabs: GenericSettingsProps['tabs'] = tabsDescriptions

@@ -29,7 +29,7 @@ import {
 import { AuthProvider } from '../../../../apps/brick/src/user/AuthProvider'
 import { Workspace } from './Workspace'
 import { PublicAddress } from './PublicAddress'
-import { SubscriptionPlanId, DefaultSubscriptionPlanId } from '@brick/misc/constants/subscription'
+import { DefaultSubscriptionPlanId } from '@brick/misc/constants/subscription'
 import { Page } from './Page'
 import { PageUserCollaboration } from './PageUserCollaboration'
 import { WorkspaceUserCollaboration } from './WorkspaceUserCollaboration'
@@ -46,7 +46,6 @@ export class User {
   @Column()
   email: string
 
-
   @Column()
   provider: AuthProvider
 
@@ -57,7 +56,7 @@ export class User {
   publicAddresses?: PublicAddress[]
 
   @Column({ default: DefaultSubscriptionPlanId })
-  subscriptionPlan: SubscriptionPlanId
+  subscriptionPlan: string
 
   @Column({ nullable: true })
   customerId?: string

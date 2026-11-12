@@ -32,7 +32,6 @@ import AccountSettings from '../components/AccountSettings'
 import BackupSettings from '../components/BackupSettings'
 import WorkspaceSettings from '../pages/WorkspaceSettings'
 import WorkspaceSettingsGeneral from '../components/WorkspaceSettingsGeneral'
-import SubscriptionSettings from '../components/SubscriptionSettings'
 import { IoMdMenu } from '@react-icons/all-files/io/IoMdMenu'
 import HeaderContainer from '../components/HeaderContainer'
 import WorkspaceSettingsCollaboration from '../components/WorkspaceSettingsCollaboration'
@@ -68,11 +67,6 @@ const routes: RouteConfig[] = [
             path: '/settings/backup',
             exact: true,
             component: BackupSettings,
-          },
-          {
-            path: '/settings/subscription',
-            exact: true,
-            component: SubscriptionSettings,
           },
         ],
       },

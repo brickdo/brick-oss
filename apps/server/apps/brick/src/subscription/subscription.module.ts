@@ -18,23 +18,20 @@
 import { forwardRef, Module } from '@nestjs/common'
 import { UserModule } from '@brick/user/user.module'
 import { SubscriptionController } from './subscription.controller'
-import { StripeModule } from '@brick/stripe/stripe.module'
 import { SubscriptionService } from './subscription.service'
 import { SubscriptionAuthService } from './subscription.auth.service'
 import { PublicAddressModule } from '@brick/public-address/public-address.module'
 import { CollaborationModule } from '@brick/collaboration/collaboration.module'
 import { WorkspaceModule } from '@brick/workspace/workspace.module'
-import { SubscriptionCronService } from './subscription.cron.service'
 
 @Module({
   imports: [
-    StripeModule,
     forwardRef(() => UserModule),
     forwardRef(() => PublicAddressModule),
     forwardRef(() => CollaborationModule),
     forwardRef(() => WorkspaceModule),
   ],
-  providers: [SubscriptionService, SubscriptionAuthService, SubscriptionCronService],
+  providers: [SubscriptionService, SubscriptionAuthService],
   controllers: [SubscriptionController],
   exports: [SubscriptionService, SubscriptionAuthService],
 })

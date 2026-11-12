@@ -23,7 +23,6 @@ import { useActions, useAppState } from '../store'
 import CopyValueBtn from './CopyValueBtn'
 import GenericSettingsSectionTitle from './GenericSettingsSectionTitle'
 import ProfileAvatar from './ProfileAvatar'
-import { NavLink } from 'react-router-dom'
 
 const { host, protocol } = window.location
 const appUrl = `${protocol}//${host}`
@@ -76,8 +75,8 @@ function WorkspaceSettingsCollaboration() {
     return (
       <div>
         You have reached the maximum number of collaborative workspaces allowed. <br />
-        <NavLink to='/settings/subscription'>Upgrade your plan</NavLink> or remove all users and
-        delete invites from one of your collaborative workspaces.
+        Remove all users and delete invites from an unused collaborative workspace. Paid upgrades
+        are no longer available.
       </div>
     )
   }
@@ -96,7 +95,7 @@ function WorkspaceSettingsCollaboration() {
         {isExceedUsersLimit && (
           <div className='font-semibold text-gray-500 text-sm mb-2'>
             You have exceeded the user limit for collaborative workspaces. <br />
-            <NavLink to='/settings/subscription'>Manage your subscription</NavLink>
+            Remove unused members. Paid upgrades are no longer available.
           </div>
         )}
 
